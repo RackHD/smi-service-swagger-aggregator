@@ -1,10 +1,10 @@
-dell-swagger-aggregator
-
-[![Quality Gate](http://100.68.126.201:9000/api/badges/gate?key=org.sonarqube:service-swagger-aggregator)](http://100.68.126.201:9000/dashboard/index/org.sonarqube:service-swagger-aggregator)
-
+### smi-service-swagger-aggregator
 
 ### Purpose
-The dell-swagger-aggregator container is a stateless spring-boot microservice that exposes a REST API for the purpose of downloading static swagger pdf api documents for all the smi micro-services with RackHD northbound  and RackHD redfish api. It also aggregates all the SMI service swagger ui api to provide single url to access all SMI micro-services swagger UI.
+
+This repository is for building the service-swagger-aggregator docker container.
+
+The service-swagger-aggregator container is a stateless spring-boot microservice that exposes a REST API for the purpose of downloading static swagger pdf api documents for all the smi micro-services with RackHD northbound and RackHD redfish api. It also aggregates all the SMI service swagger ui api to provide single url to access all SMI micro-services swagger UI.
 
 ---
 
@@ -13,7 +13,7 @@ The dell-swagger-aggregator container is a stateless spring-boot microservice th
 #### Startup
 Standalone, with no configuration settings provided:
 ```
-docker run --name service-server-inventory -p 0.0.0.0:46021:460021 -d rackhd/dell-swagger-aggregator:latest
+sudo docker run --name service-server-inventory -p 0.0.0.0:46021:460021 -d rackhd/dell-swagger-aggregator:latest
 ```
 The service can also start up to bootstrap its configuration from consul.  More information about registration with and using advanced configuration settings provided by a Consul K/V store can be found in the online help.
 
