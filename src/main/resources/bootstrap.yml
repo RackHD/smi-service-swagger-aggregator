@@ -1,0 +1,50 @@
+server:
+    port: 46021
+
+swagger: 
+    host: http://localhost
+
+logging:
+  level.root: ERROR
+  level.com.dell.isg.smi: TRACE
+  file: /var/log/dell/service-swagger-aggregator.log
+
+asciidoctor: 
+    generated: /asciidoc/generated
+    reports: /asciidoc/reports
+    docType: pdf
+    asciiExt: adoc
+    allDocs: api-documents.zip
+    schedule: 
+      interval: 600000
+      initial: 1000
+---
+
+spring:
+  profiles: default
+  application:
+    name: SWAGGER-AGGREGATOR
+  cloud:
+    bus:
+      enabled: false
+    consul:
+      enabled: false
+      config:
+        enabled: false
+---
+
+spring:
+  profiles: consul
+  application:
+    name: SWAGGER-AGGREGATOR
+  cloud:
+    consul:
+      enabled: true
+      host: service-registry
+      port: 8500
+      config:
+        prefix: config
+        profileSeparator: '::'
+        format: YAML
+        data-key: data
+        fail-fast: true
